@@ -1,13 +1,14 @@
-# Lit App Shell Starter
+# Workers Demo
 
-This project uses concepts to bring a lit project together as a starter shell. This includes routing, top level context API to manage shared classes and data down the tree.
+This is a workers Demo project that utilizes Micro Frontends with workers (linked below).
 
 ## Key concepts
-* Lit Element
-* Vaadin Router
-* Lit Context
-* Lit Tasks
+
+- Lit Element
+- Vaadin Router
+- Lit Context
+- Lit Tasks
 
 ### Live Demo
 
-Click [here](https://quincarter.github.io/app-shell-starter/) to view the live site.
+Click [here](https://quincarter.github.io/workers-demo/) to view the live site.

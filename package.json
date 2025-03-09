@@ -1,5 +1,5 @@
 {
-  "name": "@quincarter/app-shell-starter",
+  "name": "@quincarter/workers-demo",
   "private": true,
   "version": "0.0.0",
   "scripts": {

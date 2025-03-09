@@ -8,8 +8,8 @@ import {
 } from 'lit';
 import { property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
+import './generic-card-skeleton';
 import { GenericCardStyles } from './generic-card.styles';
-
 export type CardVariant = 'default' | 'no-outline-column' | 'no-outline-row';
 
 /**
@@ -166,34 +166,45 @@ export class GenericCard extends LitElement {
     this.shadowRoot?.dispatchEvent(clickEvent);
   };
 
+  /**
+   * If attached to the element, this makes the card appear to be loading
+   * @attr card-loading
+   * @type {Boolean}
+   * @default false
+   */
+  @property({ type: Boolean, attribute: 'card-loading' })
+  loading = false;
+
   renderCard(): HTMLTemplateResult {
-    return html`<div
-      @click="${this.interactive && !this.disabled
-        ? this.cardClickEvent
-        : () => {}}"
-      id="${this.cardId ? this.cardId : `card-${this.variant}`}"
-      class="card-wrapper ${this.variant} ${this.disabled
-        ? 'disabled'
-        : ''} ${this.interactive ? 'interactive' : ''}"
-    >
-      ${this.imgSrc && !this.litSvg
-        ? html`<img
-            class="${this.variant} ${this.avatar ? 'avatar' : ''}"
-            src="${this.imgSrc}"
-            alt="${this.imgAlt}"
-            style="${styleMap({
-              height: this.imgHeight,
-              width: this.imgWidth,
-            })}"
-          />`
-        : nothing}
-      ${this.litSvg ? html`${this.litSvg}` : nothing}
-      <div class="card ${this.disabled ? 'disabled' : ''}">
-        <slot name="card-title"></slot>
-        <slot></slot>
-        <slot name="card-footer"></slot>
-      </div>
-    </div>`;
+    return html`${this.loading
+      ? html`<generic-card-skeleton></generic-card-skeleton>`
+      : html`<div
+          @click="${this.interactive && !this.disabled
+            ? this.cardClickEvent
+            : () => {}}"
+          id="${this.cardId ? this.cardId : `card-${this.variant}`}"
+          class="card-wrapper ${this.variant} ${this.disabled
+            ? 'disabled'
+            : ''} ${this.interactive ? 'interactive' : ''}"
+        >
+          ${this.imgSrc && !this.litSvg
+            ? html`<img
+                class="${this.variant} ${this.avatar ? 'avatar' : ''}"
+                src="${this.imgSrc}"
+                alt="${this.imgAlt}"
+                style="${styleMap({
+                  height: this.imgHeight,
+                  width: this.imgWidth,
+                })}"
+              />`
+            : nothing}
+          ${this.litSvg ? html`${this.litSvg}` : nothing}
+          <div class="card ${this.disabled ? 'disabled' : ''}">
+            <slot name="card-title"></slot>
+            <slot></slot>
+            <slot name="card-footer"></slot>
+          </div>
+        </div>`}`;
   }
 
   render(): HTMLTemplateResult {

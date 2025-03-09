@@ -1987,9 +1987,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@quincarter/app-shell-starter@workspace:.":
+"@quincarter/workers-demo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@quincarter/app-shell-starter@workspace:."
+  resolution: "@quincarter/workers-demo@workspace:."
   dependencies:
     "@custom-elements-manifest/analyzer": "npm:^0.10.4"
     "@kurkle/color": "npm:^0.3.4"
