@@ -4,7 +4,6 @@ export const GenericCardSkeletonStyles = css`
   :host {
     display: grid;
     width: 100%;
-    content-visibility: auto;
   }
   .skeleton-box {
     display: inline-block;
@@ -12,7 +11,6 @@ export const GenericCardSkeletonStyles = css`
     position: relative;
     overflow: hidden;
     background-color: #dddbdd;
-    content-visibility: auto;
   }
 
   .skeleton-box.movie-poster {
@@ -22,7 +20,6 @@ export const GenericCardSkeletonStyles = css`
     position: relative;
     top: 3rem;
     margin-inline: auto;
-    content-visibility: auto;
   }
   .skeleton-box.title {
     width: 50%;

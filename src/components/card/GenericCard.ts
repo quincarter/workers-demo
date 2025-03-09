@@ -192,6 +192,8 @@ export class GenericCard extends LitElement {
                 class="${this.variant} ${this.avatar ? 'avatar' : ''}"
                 src="${this.imgSrc}"
                 alt="${this.imgAlt}"
+                preload
+                prefetch
                 style="${styleMap({
                   height: this.imgHeight,
                   width: this.imgWidth,

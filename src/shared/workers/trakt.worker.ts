@@ -8,7 +8,6 @@ const spawnWorkers = async (key: string, data: any) => {
   data.map((item: any, index: number) => {
     const workerSpawned = new MovieInfoWorker();
     workerSpawned.onmessage = (message: MessageEvent) => {
-      console.log('message back from worker spawned', message.data);
 
       mappedData.push(message.data);
 
@@ -65,7 +64,6 @@ const mostPlayed = async () => {
 };
 
 onmessage = async (data: MessageEvent) => {
-  console.log('data in worker', data);
   trending();
   mostPlayed();
 };

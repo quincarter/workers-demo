@@ -14,7 +14,6 @@ export const GenericCardStyles: CSSResultOrNative = css`
   /* Wrapper to replace the :host element */
   .card-wrapper.default {
     display: grid;
-    content-visibility: auto;
   }
 
   .card-wrapper.no-outline-column {
@@ -35,7 +34,6 @@ export const GenericCardStyles: CSSResultOrNative = css`
 
   /* Card variants */
   .default > .card {
-    content-visibility: auto;
     box-shadow: var(--primary-box-shadow);
     background-color: var(--primary-card-background-color);
     border-radius: 10px;
@@ -47,7 +45,6 @@ export const GenericCardStyles: CSSResultOrNative = css`
   }
 
   .no-outline-column > .card {
-    content-visibility: auto;
     background-color: transparent;
     display: flex;
     flex-direction: column;
@@ -56,7 +53,6 @@ export const GenericCardStyles: CSSResultOrNative = css`
   }
 
   .no-outline-row > .card {
-    content-visibility: auto;
     background-color: transparent;
     display: flex;
     flex-direction: column;

@@ -22,10 +22,8 @@ export class CardExamples extends ViewMixin(LitElement) {
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        content-visibility: auto;
       }
       .card-container {
-        content-visibility: auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1rem;
@@ -49,29 +47,40 @@ export class CardExamples extends ViewMixin(LitElement) {
   connectedCallback(): void {
     super.connectedCallback();
     worker.onmessage = (message: MessageEvent) => {
-      console.log('worker message sent back to main thread', message.data);
       if (message.data.moviesCount) {
         this.movies = new Array(message.data.moviesCount).fill({}); // initialize array with blank objects
-        console.log('empty movies', this.movies);
       }
 
       if (message.data.trendingCount) {
         this.trending = new Array(message.data.trendingCount).fill({}); // initialize array with blank objects
-        console.log('empty trending', this.trending);
       }
 
       if (message.data.movies) {
         this.movies = [...message.data.movies];
+        localStorage.setItem('topMovies', JSON.stringify(message.data.movies));
       }
 
       if (message.data.trending) {
         this.trending = [...message.data.trending];
+        localStorage.setItem(
+          'trendingMovies',
+          JSON.stringify(message.data.trending),
+        );
       }
     };
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
-    worker.postMessage('requesting movies');
+    const topMovies = JSON.parse(localStorage.getItem('topMovies') || '[]');
+    const trendingMovies = JSON.parse(
+      localStorage.getItem('trendingMovies') || '[]',
+    );
+    if (topMovies.length && trendingMovies.length) {
+      this.movies = topMovies;
+      this.trending = trendingMovies;
+    } else {
+      worker.postMessage('requesting movies');
+    }
   }
 
   renderMovieCard(movie: any) {
