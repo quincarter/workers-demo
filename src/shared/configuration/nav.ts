@@ -64,4 +64,14 @@ export const sidePages: NavItem[] = [
     tagName: 'detail-page',
     isMfe: false,
   },
+  {
+    name: 'Movie Info',
+    path: 'movies/(.*)',
+    directory: 'movies',
+    component: 'movie-info',
+    filePath: '../../views/movies/movie-info.ts',
+    levelOfAccess: ['private'],
+    tagName: 'movie-info',
+    isMfe: false,
+  },
 ];

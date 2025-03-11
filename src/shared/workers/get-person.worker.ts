@@ -1,6 +1,6 @@
-const getMovieSummary = async (id: string | number) => {
+const getPerson = async (id: string | number) => {
   const response = await fetch(
-    `https://api.trakt.tv/movies/${id}?extended=full,images`,
+    `https://api.trakt.tv/people/${id}?extended=full,images`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -11,9 +11,10 @@ const getMovieSummary = async (id: string | number) => {
     },
   );
 
-  postMessage(await response.json());
+  let msg = await response.json();
+  postMessage(msg);
 };
 
 onmessage = (message: MessageEvent) => {
-  getMovieSummary(message.data);
+  getPerson(message.data); //id
 };

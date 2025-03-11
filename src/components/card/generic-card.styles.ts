@@ -14,6 +14,8 @@ export const GenericCardStyles: CSSResultOrNative = css`
   /* Wrapper to replace the :host element */
   .card-wrapper.default {
     display: grid;
+    position: relative;
+    z-index: 3;
   }
 
   .card-wrapper.no-outline-column {
@@ -36,12 +38,25 @@ export const GenericCardStyles: CSSResultOrNative = css`
   .default > .card {
     box-shadow: var(--primary-box-shadow);
     background-color: var(--primary-card-background-color);
+    opacity: 0.6;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem;
-    padding-top: 4rem;
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    transition: all ease-in-out 0.25s;
+  }
+
+  img:hover + .card,
+  .card:hover,
+  .card-wrapper.default {
+    cursor: pointer;
+    z-index: 2;
+    height: 100%;
+    transition: height ease-in-out 0.25s;
   }
 
   .no-outline-column > .card {
@@ -77,7 +92,6 @@ export const GenericCardStyles: CSSResultOrNative = css`
     box-shadow: var(--image-box-shadow);
     margin-inline: auto;
     position: relative;
-    top: 3rem;
     z-index: 1;
   }
 
@@ -100,5 +114,16 @@ export const GenericCardStyles: CSSResultOrNative = css`
     overflow: auto;
     margin-block: 1rem;
     padding-inline: 1rem;
+  }
+
+  .selected-flag {
+    height: 1rem;
+    width: 1rem;
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 4;
+    left: 0.5rem;
+    top: 0.5rem;
   }
 `;

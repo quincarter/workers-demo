@@ -8,7 +8,6 @@ const spawnWorkers = async (key: string, data: any) => {
   data.map((item: any, index: number) => {
     const workerSpawned = new MovieInfoWorker();
     workerSpawned.onmessage = (message: MessageEvent) => {
-
       mappedData.push(message.data);
 
       if (data.length === mappedData.length) {

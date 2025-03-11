@@ -155,6 +155,7 @@ export class GenericCard extends LitElement {
 
   @property({ type: Object, attribute: 'card-click-callback' })
   cardClickEvent: (e: any) => void = e => {
+    console.log('card clicked', e);
     e.preventDefault();
     e.stopPropagation();
     const clickEvent = new CustomEvent('card-clicked', {
@@ -175,6 +176,15 @@ export class GenericCard extends LitElement {
   @property({ type: Boolean, attribute: 'card-loading' })
   loading = false;
 
+  /**
+   * If attached to the element, this makes the card appear to be selected
+   * @attr card-selected
+   * @type {Boolean}
+   * @default false
+   */
+  @property({ type: Boolean, attribute: 'card-selected' })
+  selected = false;
+
   renderCard(): HTMLTemplateResult {
     return html`${this.loading
       ? html`<generic-card-skeleton></generic-card-skeleton>`
@@ -187,6 +197,7 @@ export class GenericCard extends LitElement {
             ? 'disabled'
             : ''} ${this.interactive ? 'interactive' : ''}"
         >
+          ${this.selected ? html`<span class="selected-flag"></span>` : nothing}
           ${this.imgSrc && !this.litSvg
             ? html`<img
                 class="${this.variant} ${this.avatar ? 'avatar' : ''}"

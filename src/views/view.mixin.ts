@@ -6,12 +6,15 @@ import { MfeLoaderContext } from '../shared/contexts/mfe-loader.context';
 import { NavigationContext } from '../shared/contexts/navigation.context';
 import { NavItem } from '../shared/interfaces/navigation.interface';
 import { MfeLoader } from '../shared/utilities/mfe-loader.utility';
+import { RouterContext } from '../shared/contexts/router.context';
+import { Router } from '@vaadin/router';
 
 type Constructor<T = {}> = new (...args: any[]) => T;
 
 export declare class ViewMixinInterface {
   navItems: NavItem[];
   roles: string[];
+  _router: any;
   mfeLoader: MfeLoader | undefined;
   tagName: string;
   componentData: NavItem;
@@ -34,6 +37,10 @@ export const ViewMixin = <T extends Constructor<LitElement>>(superClass: T) => {
     @consume({ context: MfeLoaderContext, subscribe: true })
     @state()
     mfeLoader: MfeLoader | undefined;
+
+    @consume({ context: RouterContext, subscribe: true })
+    @state()
+    _router: any;
 
     @state()
     tagName = '';

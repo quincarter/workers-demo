@@ -18,6 +18,7 @@ import './components/card/generic-card';
 import './components/chart-js/chart-js';
 import { AppRootUtilities } from './shared/utilities/app-root.utility';
 import { MfeLoader } from './shared/utilities/mfe-loader.utility';
+import { RouterContext } from './shared/contexts/router.context';
 
 /**
  * An example element.
@@ -39,8 +40,9 @@ export class AppShell extends LitElement {
   @state()
   mfeLoader = new MfeLoader(MFE_LOADER_CONFIG);
 
+  @provide({ context: RouterContext })
   @state()
-  _router: Router | undefined;
+  _router: Router = new Router();
 
   @state()
   nonNavRoutes: NavItem[] = [] as NavItem[];
