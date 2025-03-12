@@ -128,4 +128,9 @@ export const MovieInfoStyles = css`
   .links > a > img {
     height: 3rem;
   }
+  @media screen and (max-width: 1150px) {
+    .movie-info.selected {
+      height: unset;
+    }
+  }
 `;

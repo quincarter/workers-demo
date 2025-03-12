@@ -25,10 +25,10 @@ export class AppShellHeader extends LitElement {
                 route =>
                   html`<li><a href="${route.path}">${route.name}</a></li>`,
               )}
+              ${this.enableThemeSwitcher
+                ? html`<li><theme-switcher></theme-switcher></li>`
+                : nothing}
             </ul>
-            ${this.enableThemeSwitcher
-              ? html`<theme-switcher></theme-switcher>`
-              : nothing}
           </nav>
           <slot></slot>`
       : nothing} `;

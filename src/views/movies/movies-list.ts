@@ -121,6 +121,7 @@ export class CardExamples extends ViewMixin(LitElement) {
         flex-direction: column;
         width: 100%;
         transition: all 1s ease-in-out;
+        position: relative;
       }
 
       @media screen and (max-width: 1150px) {
@@ -130,6 +131,11 @@ export class CardExamples extends ViewMixin(LitElement) {
           grid-template-columns: 100% 1fr;
           grid-template-areas: 'selected selected selected';
           overflow-y: auto;
+        }
+
+        .selected-area.selected {
+          position: absolute;
+          height: 100%;
         }
       }
     `,
