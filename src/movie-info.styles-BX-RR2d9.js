@@ -1,4 +1,4 @@
-import{i as e}from"./index-kmHjOaSl.js";const o=e`
+import{i as e}from"./index-DCmr_WFc.js";const o=e`
   .movie-info.selected {
     transition: width 1s ease-in-out;
     overflow-wrap: anywhere;
