@@ -21,18 +21,9 @@ const getMoviePeople = async (id: string | number) => {
     const getPersonWorker = new GetPersonWorker();
     getPersonWorker.onmessage = (message: MessageEvent) => {
       mappedCastWithImages.push({ ...message.data, ...castMember });
-      console.log(
-        'message.cast.length',
-        msg.cast,
-        msg.cast.length,
-        mappedCastWithImages.length,
-        mappedCastWithImages,
-      );
-      console.log('person data here', message.data);
-
+    
       if (msg.cast.length === mappedCastWithImages.length) {
         msg = { ...msg, cast: [...mappedCastWithImages], id };
-        console.log('HEY I GOT HERE', msg);
         postMessage(msg);
       }
       getPersonWorker.terminate();

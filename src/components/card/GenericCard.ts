@@ -155,7 +155,6 @@ export class GenericCard extends LitElement {
 
   @property({ type: Object, attribute: 'card-click-callback' })
   cardClickEvent: (e: any) => void = e => {
-    console.log('card clicked', e);
     e.preventDefault();
     e.stopPropagation();
     const clickEvent = new CustomEvent('card-clicked', {
@@ -203,8 +202,7 @@ export class GenericCard extends LitElement {
                 class="${this.variant} ${this.avatar ? 'avatar' : ''}"
                 src="${this.imgSrc}"
                 alt="${this.imgAlt}"
-                preload
-                prefetch
+                loading="lazy"
                 style="${styleMap({
                   height: this.imgHeight,
                   width: this.imgWidth,

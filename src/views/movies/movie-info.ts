@@ -2,12 +2,26 @@ import { HTMLTemplateResult, LitElement, PropertyValues, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import '../../components/dialog/custom-dialog';
 import MoviePeopleWorker from '../../shared/workers/movie-people.worker?worker&inline';
-import { convertMinutesToString } from '../../shared/utilities/utils';
+import {
+  convertMinutesToString,
+  getImdbUrl,
+  getTmdbMovieUrl,
+  getTraktMovieUrl,
+} from '../../shared/utilities/utils';
 import { MovieInfoStyles } from './movie-info.styles';
 import '../../components/people/person-card';
+import { TraktSvg } from './images/trakt.svg';
+import { ImdbSvg } from './images/imdb.svg';
+// import { TmdbSvg } from './images/tmdb.svg';
+import TmdbSvg from './images/tmdb-svg.svg';
 
 const moviePeopleWorker = new MoviePeopleWorker();
 
+const iconMap = {
+  TraktSvg,
+  ImdbSvg,
+  TmdbSvg,
+};
 @customElement('movie-info')
 export class MovieInfo extends LitElement {
   @property({ type: Object, attribute: 'selected-movie' })
@@ -34,12 +48,10 @@ export class MovieInfo extends LitElement {
         localStorage.getItem('peopleObjects') || '[]',
       );
 
-      console.log('people data here', this.people);
       const doesntExist = allPeople?.every(
         (movie: { id: any }) =>
           parseInt(this.people?.id) !== parseInt(movie?.id),
       );
-      console.log('exists', doesntExist);
 
       if (doesntExist) {
         allPeople.push(this.people);
@@ -58,8 +70,6 @@ export class MovieInfo extends LitElement {
       const doesntExist = allPeople?.every(
         (movie: { id: any }) => this.selectedMovie?.ids?.trakt !== movie?.id,
       );
-      console.log('alllllll people', allPeople, this.people, doesntExist);
-      console.log('exists', doesntExist);
 
       if (doesntExist) {
         moviePeopleWorker.postMessage(this.selectedMovie?.ids?.trakt);
@@ -72,61 +82,99 @@ export class MovieInfo extends LitElement {
     }
   }
 
+  closeButtonClicked() {
+    this.selectedMovie = {};
+    this.people = {};
+    const event = new CustomEvent('closed', {
+      bubbles: true,
+      composed: true,
+    });
+
+    this.shadowRoot?.dispatchEvent(event);
+  }
+
   render(): HTMLTemplateResult {
     return html`<div class="movie-info ${this.selectedMovie ? 'selected' : ''}">
+      <button class="close-button" @click="${this.closeButtonClicked}">
+        &#x2715;
+      </button>
       <div class="hero">
         <img
+          loading="lazy"
           src="https://${this.selectedMovie.images.fanart}"
           alt="${this.selectedMovie.title} Backdrop"
         />
       </div>
-      <section class="main-info">
-        <div class="header">
-          <div class="poster">
-            <img
-              src="https://${this.selectedMovie.images.poster}"
-              alt="${this.selectedMovie.title} Poster"
-            />
-          </div>
-          <div class="logo">
-            <img
-              src="https://${this.selectedMovie.images.logo}"
-              alt="${this.selectedMovie.title} Logo"
-            />
-          </div>
-          <div class="metadata">
-            <p>
-              Runtime: ${convertMinutesToString(this.selectedMovie.runtime)}
-            </p>
-            <p>Release Year: ${this.selectedMovie.year}</p>
-            <div class="rating">
-              <span class="star"
-                >${Math.round(this.selectedMovie.rating * 10) / 10}</span
-              >
+      <div class="container">
+        <div class="main-info">
+          <div class="header">
+            <div class="poster">
+              <img
+                loading="lazy"
+                src="https://${this.selectedMovie.images.poster}"
+                alt="${this.selectedMovie.title} Poster"
+              />
+            </div>
+            <div class="logo">
+              <img
+                loading="lazy"
+                src="https://${this.selectedMovie.images.logo}"
+                alt="${this.selectedMovie.title} Logo"
+              />
+            </div>
+            <div class="metadata">
+              <p>
+                Runtime: ${convertMinutesToString(this.selectedMovie.runtime)}
+              </p>
+              <p>Release Year: ${this.selectedMovie.year}</p>
+              <div class="rating">
+                <span class="star"
+                  >${Math.round(this.selectedMovie.rating * 10) / 10}</span
+                >
+                <span class="thumbs-up">${this.selectedMovie.votes}</span>
+              </div>
+              <div class="votes"></div>
             </div>
           </div>
+          <div class="description">
+            <p>${this.selectedMovie.overview}</p>
+          </div>
+          <div class="links">
+            <a
+              target="_blank"
+              href="${getTraktMovieUrl(this.selectedMovie?.ids?.slug)}"
+              >${iconMap.TraktSvg}</a
+            >
+            <a
+              target="_blank"
+              href="${getTmdbMovieUrl(this.selectedMovie?.ids?.tmdb)}"
+              ><img src="${TmdbSvg}" alt="tmdb"
+            /></a>
+            <a
+              target="_blank"
+              href="${getImdbUrl(this.selectedMovie?.ids?.imdb)}"
+              >${iconMap.ImdbSvg}</a
+            >
+          </div>
         </div>
-        <div class="description">
-          <p>${this.selectedMovie.overview}</p>
-        </div>
-      </section>
 
-      <section class="people">
-        <h2>People</h2>
-        <ul class="people-list">
-          ${this.people?.cast?.map(
-            (person: any) =>
-              html`<li>
-                <person-card
-                  person-name="${person.name}"
-                  person-role="${person.character}"
-                  person-image="https://${person.images.headshot[0]}"
-                  ?person-loading="${this.setPeopleLoading}"
-                ></person-card>
-              </li>`,
-          )}
-        </ul>
-      </section>
+        <div class="people">
+          <h2>People</h2>
+          <ul class="people-list">
+            ${this.people?.cast?.map(
+              (person: any) =>
+                html`<li>
+                  <person-card
+                    person-name="${person.name}"
+                    person-role="${person.character}"
+                    person-image="https://${person?.images?.headshot[0]}"
+                    ?person-loading="${this.setPeopleLoading}"
+                  ></person-card>
+                </li>`,
+            )}
+          </ul>
+        </div>
+      </div>
     </div>`;
   }
 }

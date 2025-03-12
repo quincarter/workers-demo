@@ -13,6 +13,30 @@ export const MovieInfoStyles = css`
     transition: width 1s ease-in-out;
     width: 0px;
     height: 100%;
+    color: #fff;
+  }
+
+  .close-button {
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 25px;
+    position: absolute;
+    right: 1rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  .close-button:hover {
+    border-radius: 50%;
+    background-color: rgb(111 111 111 / 80%);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
   .main-info {
@@ -55,12 +79,27 @@ export const MovieInfoStyles = css`
     margin-block: 0;
   }
 
-  .star:before {
-    content: '\\2605';
+  .rating {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
-  section.people {
+  .star::before {
+    content: '\\2605';
+    padding-right: 1rem;
+  }
+
+  .thumbs-up::before {
+    content: '\\1F44D';
+    padding-right: 1rem;
+  }
+
+  .people {
     padding-inline: 2rem;
+    position: relative;
+    top: -10rem;
   }
   ul.people-list {
     padding-inline: 0;
@@ -75,5 +114,18 @@ export const MovieInfoStyles = css`
 
   ul.people-list::-webkit-scrollbar {
     display: none;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .links > a > svg,
+  .links > a > img {
+    height: 3rem;
   }
 `;

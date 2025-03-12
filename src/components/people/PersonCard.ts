@@ -42,7 +42,7 @@ export class PersonCard extends LitElement {
     return html`${this.loading
       ? html`<person-loading-skeleton></person-loading-skeleton>`
       : html` <div class="person-bubble">
-          <img src="${this.image}" alt="${this.name}" />
+          <img loading="lazy" src="${this.image}" alt="${this.name}" />
           <div class="text">
             <p class="name">${this.name}</p>
             <p class="role">${this.role}</p>

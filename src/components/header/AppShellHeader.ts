@@ -17,7 +17,9 @@ export class AppShellHeader extends LitElement {
   render(): HTMLTemplateResult {
     return html`${this.routes.length > 0
       ? html`<nav>
-            <a href="home"><img class="logo" src="${logoPng}" alt="logo" /></a>
+            <a href="home"
+              ><img loading="lazy" class="logo" src="${logoPng}" alt="logo"
+            /></a>
             <ul>
               ${this.routes.map(
                 route =>

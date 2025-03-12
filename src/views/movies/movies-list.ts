@@ -122,6 +122,16 @@ export class CardExamples extends ViewMixin(LitElement) {
         width: 100%;
         transition: all 1s ease-in-out;
       }
+
+      @media screen and (max-width: 1150px) {
+        .content-grid.selected-movie {
+          transform: scaleX(100%);
+          transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          grid-template-columns: 100% 1fr;
+          grid-template-areas: 'selected selected selected';
+          overflow-y: auto;
+        }
+      }
     `,
   ];
 
@@ -166,7 +176,6 @@ export class CardExamples extends ViewMixin(LitElement) {
 
   setSelectedMovie(id: string) {
     if (this.selectedMovie?.ids?.trakt === parseInt(id)) {
-
       this.selectedMovie = {};
 
       document.body.classList.contains('selected-movie')
@@ -208,6 +217,10 @@ export class CardExamples extends ViewMixin(LitElement) {
     </generic-card>`;
   }
 
+  sidebarClosed() {
+    this.selectedMovie = {};
+  }
+
   render(): HTMLTemplateResult {
     return this.renderMfe(html`
       <div
@@ -241,15 +254,12 @@ export class CardExamples extends ViewMixin(LitElement) {
         <div class="selected-area ${this.selectedMovie ? 'selected' : ''}">
           ${this.selectedMovie?.title
             ? html`<movie-info
+                @closed="${this.sidebarClosed}"
                 .selectedMovie="${this.selectedMovie}"
               ></movie-info>`
             : nothing}
         </div>
       </div>
     `);
-  }
-
-  listenForClicks(e: CustomEvent<any>): void {
-    console.log('item clicked', e.detail);
   }
 }
