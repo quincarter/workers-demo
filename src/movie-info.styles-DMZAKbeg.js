@@ -1,4 +1,4 @@
-import{i as e}from"./index-DCmr_WFc.js";const o=e`
+import{i as e}from"./index-DGUbqLVA.js";const o=e`
   .movie-info.selected {
     transition: width 1s ease-in-out;
     overflow-wrap: anywhere;
@@ -125,5 +125,10 @@ import{i as e}from"./index-DCmr_WFc.js";const o=e`
   .links > a > svg,
   .links > a > img {
     height: 3rem;
+  }
+  @media screen and (max-width: 1150px) {
+    .movie-info.selected {
+      height: unset;
+    }
   }
 `;export{o as MovieInfoStyles};

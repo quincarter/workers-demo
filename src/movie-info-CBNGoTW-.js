@@ -1,4 +1,4 @@
-import{i as k,h as g,k as n,n as m,O as H,r as y,t as O}from"./index-DCmr_WFc.js";import{MovieInfoStyles as S}from"./movie-info.styles-BX-RR2d9.js";const Z=k`
+import{i as k,h as g,k as n,n as m,O as H,r as y,t as O}from"./index-DGUbqLVA.js";import{MovieInfoStyles as S}from"./movie-info.styles-DMZAKbeg.js";const Z=k`
   :host {
   }
 
