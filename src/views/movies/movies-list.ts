@@ -219,6 +219,9 @@ export class CardExamples extends ViewMixin(LitElement) {
 
   sidebarClosed() {
     this.selectedMovie = {};
+    document.body.classList.contains('selected-movie')
+      ? document.body.classList.remove('selected-movie')
+      : '';
   }
 
   render(): HTMLTemplateResult {

@@ -1,6 +1,7 @@
 import { html, HTMLTemplateResult, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 import { PersonCardStyles } from './person-card.styles';
+import PersonSvg from './person-fill-svgrepo-com.svg';
 import './person-loading';
 
 export class PersonCard extends LitElement {
@@ -42,7 +43,11 @@ export class PersonCard extends LitElement {
     return html`${this.loading
       ? html`<person-loading-skeleton></person-loading-skeleton>`
       : html` <div class="person-bubble">
-          <img loading="lazy" src="${this.image}" alt="${this.name}" />
+          <img
+            loading="lazy"
+            src="${this.image || PersonSvg}"
+            alt="${this.name}"
+          />
           <div class="text">
             <p class="name">${this.name}</p>
             <p class="role">${this.role}</p>

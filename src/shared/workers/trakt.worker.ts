@@ -5,7 +5,7 @@ const MOVIES_BASE = `https://api.trakt.tv/movies`;
 const spawnWorkers = async (key: string, data: any) => {
   let mappedData: any[] = [];
 
-  data.map((item: any, index: number) => {
+  data.map((item: any) => {
     const workerSpawned = new MovieInfoWorker();
     workerSpawned.onmessage = (message: MessageEvent) => {
       mappedData.push(message.data);
@@ -63,6 +63,7 @@ const mostPlayed = async () => {
 };
 
 onmessage = async (data: MessageEvent) => {
+  console.log('data', data);
   trending();
   mostPlayed();
 };

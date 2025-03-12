@@ -1,17 +1,17 @@
-import { HTMLTemplateResult, LitElement, PropertyValues, css, html } from 'lit';
+import { HTMLTemplateResult, LitElement, PropertyValues, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import '../../components/dialog/custom-dialog';
-import MoviePeopleWorker from '../../shared/workers/movie-people.worker?worker&inline';
+import '../../components/people/person-card';
 import {
   convertMinutesToString,
   getImdbUrl,
   getTmdbMovieUrl,
   getTraktMovieUrl,
 } from '../../shared/utilities/utils';
-import { MovieInfoStyles } from './movie-info.styles';
-import '../../components/people/person-card';
-import { TraktSvg } from './images/trakt.svg';
+import MoviePeopleWorker from '../../shared/workers/movie-people.worker?worker&inline';
 import { ImdbSvg } from './images/imdb.svg';
+import { TraktSvg } from './images/trakt.svg';
+import { MovieInfoStyles } from './movie-info.styles';
 // import { TmdbSvg } from './images/tmdb.svg';
 import TmdbSvg from './images/tmdb-svg.svg';
 
@@ -167,7 +167,9 @@ export class MovieInfo extends LitElement {
                   <person-card
                     person-name="${person.name}"
                     person-role="${person.character}"
-                    person-image="https://${person?.images?.headshot[0]}"
+                    person-image="${person?.images?.headshot[0]
+                      ? `https://${person?.images?.headshot[0]}`
+                      : ''}"
                     ?person-loading="${this.setPeopleLoading}"
                   ></person-card>
                 </li>`,
