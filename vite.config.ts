@@ -22,7 +22,7 @@ export default defineConfig({
       manifest: {
         name: 'My Awesome App',
         short_name: 'MyApp',
-        publicPath: './public',
+        publicPath: './dist',
         description: 'My Awesome App description',
         theme_color: 'red',
         icons: [
@@ -43,6 +43,9 @@ export default defineConfig({
       },
     }),
   ],
+  worker: {
+    format: 'es',
+  },
   build: {
     assetsDir: 'src',
     cssMinify: true,
