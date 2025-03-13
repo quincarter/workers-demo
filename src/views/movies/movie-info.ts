@@ -101,7 +101,7 @@ export class MovieInfo extends LitElement {
       <div class="hero">
         <img
           loading="lazy"
-          src="https://${this.selectedMovie.images.fanart}"
+          src="https://${this.selectedMovie?.images?.fanart}"
           alt="${this.selectedMovie.title} Backdrop"
         />
       </div>
