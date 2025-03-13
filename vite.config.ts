@@ -8,6 +8,9 @@ dns.setDefaultResultOrder('verbatim');
 
 export default defineConfig({
   base: '/',
+  server: {
+    port: 8080,
+  },
   plugins: [
     compression({
       // add extensions here --- e.g.:
@@ -49,6 +52,11 @@ export default defineConfig({
   build: {
     assetsDir: 'src',
     cssMinify: true,
+    rollupOptions: {
+      output: {
+        format: 'esm',
+      },
+    },
   },
   test: {
     coverage: {

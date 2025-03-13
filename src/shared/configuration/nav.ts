@@ -37,19 +37,9 @@ export const navigationRouting: NavItem[] = [
     directory: 'chart-examples',
     component: 'chart-examples',
     filePath: '../../views/chart-examples/chart-examples.ts',
-    levelOfAccess: ['public'],
+    levelOfAccess: ['private'],
     tagName: 'chart-examples',
     isMfe: false,
-  },
-  {
-    name: 'Vite MFE',
-    path: 'vite-mfe',
-    directory: 'vite-mfe',
-    component: 'vite-mfe',
-    filePath: '../../views/vite-mfe/vite-mfe.ts',
-    levelOfAccess: ['public'],
-    tagName: 'vite-mfe',
-    isMfe: true,
   },
 ];
 
