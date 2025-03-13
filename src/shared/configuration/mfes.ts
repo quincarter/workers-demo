@@ -3,7 +3,7 @@ import { MfeItem } from '../utilities/mfe-loader.utility';
 export const MFE_LOADER_CONFIG: MfeItem[] = [
   {
     mfeBundleUrl:
-      'https://quincarter.github.io/my-coffee-app/assets/coffee-users-u-Zp8d4z.js',
+      'https://quincarter.github.io/my-coffee-app/assets/coffee-users-CgT-UqGP.js',
     scriptType: 'module',
     isAsync: false,
     defer: false,
