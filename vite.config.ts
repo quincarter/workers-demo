@@ -7,7 +7,7 @@ import compression from 'vite-plugin-compression';
 dns.setDefaultResultOrder('verbatim');
 
 export default defineConfig({
-  base: '/workers-demo/',
+  base: '/',
   plugins: [
     compression({
       // add extensions here --- e.g.:
