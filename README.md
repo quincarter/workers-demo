@@ -11,4 +11,4 @@ This is a workers Demo project that utilizes Micro Frontends with workers (linke
 
 ### Live Demo
 
-Click [here](https://quincarter.github.io/workers-demo/) to view the live site.
+Click [here](https://rvajs-workers-demo.netlify.app) to view the live site.
