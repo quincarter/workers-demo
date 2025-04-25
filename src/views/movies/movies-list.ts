@@ -199,7 +199,7 @@ export class CardExamples extends ViewMixin(LitElement) {
 
   renderMovieCard(movie: any) {
     return html`<generic-card
-      img-src="https://${movie.images.poster}"
+      img-src="https://${movie?.images?.poster}"
       img-alt="${movie.title} Poster"
       img-height="16rem"
       card-id="${movie.ids.trakt}"

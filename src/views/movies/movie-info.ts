@@ -111,7 +111,7 @@ export class MovieInfo extends LitElement {
             <div class="poster">
               <img
                 loading="lazy"
-                src="https://${this.selectedMovie.images.poster}"
+                src="https://${this.selectedMovie?.images?.poster}"
                 alt="${this.selectedMovie.title} Poster"
               />
             </div>

@@ -23,6 +23,7 @@ export class ChartExamples extends ViewMixin(LitElement) {
       html` isMfe = ${this.isMfe}
         <h2>Basic Bar chart</h2>
         <base-chart chart-type="bar"></base-chart>
+        <base-chart chart-type="scatter"></base-chart>
         <h2>Pie and Doughnut</h2>
         <div class="pie-container">
           <base-chart chart-type="pie"></base-chart>

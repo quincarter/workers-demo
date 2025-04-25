@@ -5,6 +5,7 @@ import {
   SAMPLE_BAR_DATA,
   SAMPLE_DOUGHNUT_DATA,
   SAMPLE_PIE_DATA,
+  SAMPLE_SCATTER_DATA,
 } from './chart-types.interface';
 
 /**
@@ -65,6 +66,9 @@ export class ChartJsComponent extends LitElement {
           break;
         case 'doughnut':
           data = { ...SAMPLE_DOUGHNUT_DATA };
+          break;
+        case 'scatter':
+          data = { ...SAMPLE_SCATTER_DATA };
           break;
         default:
           break;

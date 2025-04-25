@@ -15,6 +15,38 @@ import {
 
 import * as Utils from './chart-js.utility';
 
+export interface DeviceInfo {
+  device: string;
+  processor: string;
+  label: string;
+  deviceSubType: string;
+  score: number;
+}
+
+export interface MobileDevices {
+  Apple: DeviceInfo[];
+  Android: DeviceInfo[];
+}
+
+const DATA_COUNT = 7;
+const NUMBER_CFG = { count: DATA_COUNT, rmin: 1, rmax: 1, min: 0, max: 100 };
+const scatterData = {
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: Utils.bubbles(NUMBER_CFG),
+      borderColor: Utils.CHART_COLORS.red,
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+    },
+    {
+      label: 'Dataset 2',
+      data: Utils.bubbles(NUMBER_CFG),
+      borderColor: Utils.CHART_COLORS.orange,
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.orange, 0.5),
+    },
+  ],
+};
+
 const pieData = {
   labels: ['Red', 'Blue', 'Yellow'],
   datasets: [
@@ -78,6 +110,23 @@ export const SAMPLE_BAR_DATA: any = {
     scales: {
       y: {
         beginAtZero: true,
+      },
+    },
+  },
+};
+
+export const SAMPLE_SCATTER_DATA: any = {
+  type: 'scatter',
+  data: { ...scatterData },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Scatter Chart',
       },
     },
   },
