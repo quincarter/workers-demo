@@ -1,4 +1,4 @@
-import{a as y,i as v,x as c,n as m,b as j,r as k,t as A}from"./index-BKzk3l5h.js";import{MovieInfoStyles as P}from"./movie-info.styles-C1Tu_CEO.js";const C=y`
+import{a as k,i as v,x as c,n as m,b as j,r as y,t as A}from"./index-CMC5ZSim.js";import{MovieInfoStyles as P}from"./movie-info.styles-Ch_58iD9.js";const C=k`
   :host {
   }
 
@@ -13,7 +13,7 @@ import{a as y,i as v,x as c,n as m,b as j,r as k,t as A}from"./index-BKzk3l5h.js
   ::backdrop {
     background-color: red;
   }
-`,x=class x extends v{render(){return c`<dialog open>This is a dialog</dialog>`}};x.styles=[C];let u=x;customElements.get("custom-dialog")||customElements.define("custom-dialog",u);const U=y`
+`,x=class x extends v{render(){return c`<dialog open>This is a dialog</dialog>`}};x.styles=[C];let u=x;customElements.get("custom-dialog")||customElements.define("custom-dialog",u);const U=k`
   img {
     border-radius: 50%;
     object-fit: cover;
@@ -37,7 +37,7 @@ import{a as y,i as v,x as c,n as m,b as j,r as k,t as A}from"./index-BKzk3l5h.js
     margin-block: 0;
     text-align: center;
   }
-`,E="data:image/svg+xml,%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2016%2016'%20xmlns='http://www.w3.org/2000/svg'%20fill='%23f6f6f6'%20class='bi%20bi-person-fill'%3e%3cpath%20d='M3%2014s-1%200-1-1%201-4%206-4%206%203%206%204-1%201-1%201H3zm5-6a3%203%200%201%200%200-6%203%203%200%200%200%200%206z'/%3e%3c/svg%3e",R=y`
+`,E="data:image/svg+xml,%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2016%2016'%20xmlns='http://www.w3.org/2000/svg'%20fill='%23f6f6f6'%20class='bi%20bi-person-fill'%3e%3cpath%20d='M3%2014s-1%200-1-1%201-4%206-4%206%203%206%204-1%201-1%201H3zm5-6a3%203%200%201%200%200-6%203%203%200%200%200%200%206z'/%3e%3c/svg%3e",R=k`
   :host {
     display: grid;
     width: 100%;
@@ -115,7 +115,7 @@ import{a as y,i as v,x as c,n as m,b as j,r as k,t as A}from"./index-BKzk3l5h.js
             <p class="name">${this.name}</p>
             <p class="role">${this.role}</p>
           </div>
-        </div>`}`}};$.styles=[U];let d=$;f([m({type:String,attribute:"person-name"})],d.prototype,"name");f([m({type:String,attribute:"person-role"})],d.prototype,"role");f([m({type:String,attribute:"person-image"})],d.prototype,"image");f([m({type:Boolean,attribute:"person-loading"})],d.prototype,"loading");customElements.get("person-card")||customElements.define("person-card",d);const z=e=>{const t=Math.floor(e/60),o=e%60;return`${t}h ${o}m`},I=e=>`https://www.imdb.com/title/${e}`,B=e=>`https://trakt.tv/movies/${e}`,T=e=>`https://www.themoviedb.org/movie/${e}?language=en-US`,O='function o(e){return new Worker("/src/get-person.worker-VYCQ-VH-.js",{type:"module",name:e==null?void 0:e.name})}const p=async e=>{let t=await(await fetch(`https://api.trakt.tv/movies/${e}/people?extended=cast,crew`,{headers:{"Content-Type":"application/json","trakt-api-version":"2","trakt-api-key":"d7c41473f29238207d48782764322e652086cd2bde10d7bc3e89454acb189c3f"}})).json(),a=[];t.cast.map(r=>{const s=new o;s.onmessage=n=>{a.push({...n.data,...r}),t.cast.length===a.length&&(t={...t,cast:[...a],id:e},postMessage(t)),s.terminate()},s.postMessage(r.person.ids.trakt)})};onmessage=e=>{p(e.data)};\n',H=typeof self<"u"&&self.Blob&&new Blob(["URL.revokeObjectURL(import.meta.url);",O],{type:"text/javascript;charset=utf-8"});function W(e){let t;try{if(t=H&&(self.URL||self.webkitURL).createObjectURL(H),!t)throw"";const o=new Worker(t,{type:"module",name:e==null?void 0:e.name});return o.addEventListener("error",()=>{(self.URL||self.webkitURL).revokeObjectURL(t)}),o}catch{return new Worker("data:text/javascript;charset=utf-8,"+encodeURIComponent(O),{type:"module",name:e==null?void 0:e.name})}}const G=j`<svg xmlns="http://www.w3.org/2000/svg" aria-label="IMDb" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f5c518"/><path d="M104 328V184H64v144zM189 184l-9 67-5-36-5-31h-50v144h34v-95l14 95h25l13-97v97h34V184zM256 328V184h62c15 0 26 11 26 25v94c0 14-11 25-26 25zm47-118l-9-1v94c5 0 9-1 10-3 2-2 2-8 2-18v-56-12l-3-4zM419 220h3c14 0 26 11 26 25v58c0 14-12 25-26 25h-3c-8 0-16-4-21-11l-2 9h-36V184h38v46c5-6 13-10 21-10zm-8 70v-34l-1-11c-1-2-4-3-6-3s-5 1-6 3v57c1 2 4 3 6 3s6-1 6-3l1-12z"/></svg>`,J=j`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        </div>`}`}};$.styles=[U];let d=$;f([m({type:String,attribute:"person-name"})],d.prototype,"name");f([m({type:String,attribute:"person-role"})],d.prototype,"role");f([m({type:String,attribute:"person-image"})],d.prototype,"image");f([m({type:Boolean,attribute:"person-loading"})],d.prototype,"loading");customElements.get("person-card")||customElements.define("person-card",d);const z=e=>{const t=Math.floor(e/60),o=e%60;return`${t}h ${o}m`},I=e=>`https://www.imdb.com/title/${e}`,B=e=>`https://trakt.tv/movies/${e}`,T=e=>`https://www.themoviedb.org/movie/${e}?language=en-US`,O='function o(e){return new Worker("/workers-demo/src/get-person.worker-VYCQ-VH-.js",{type:"module",name:e==null?void 0:e.name})}const p=async e=>{let t=await(await fetch(`https://api.trakt.tv/movies/${e}/people?extended=cast,crew`,{headers:{"Content-Type":"application/json","trakt-api-version":"2","trakt-api-key":"d7c41473f29238207d48782764322e652086cd2bde10d7bc3e89454acb189c3f"}})).json(),a=[];t.cast.map(r=>{const s=new o;s.onmessage=n=>{a.push({...n.data,...r}),t.cast.length===a.length&&(t={...t,cast:[...a],id:e},postMessage(t)),s.terminate()},s.postMessage(r.person.ids.trakt)})};onmessage=e=>{p(e.data)};\n',H=typeof self<"u"&&self.Blob&&new Blob(["URL.revokeObjectURL(import.meta.url);",O],{type:"text/javascript;charset=utf-8"});function W(e){let t;try{if(t=H&&(self.URL||self.webkitURL).createObjectURL(H),!t)throw"";const o=new Worker(t,{type:"module",name:e==null?void 0:e.name});return o.addEventListener("error",()=>{(self.URL||self.webkitURL).revokeObjectURL(t)}),o}catch{return new Worker("data:text/javascript;charset=utf-8,"+encodeURIComponent(O),{type:"module",name:e==null?void 0:e.name})}}const G=j`<svg xmlns="http://www.w3.org/2000/svg" aria-label="IMDb" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f5c518"/><path d="M104 328V184H64v144zM189 184l-9 67-5-36-5-31h-50v144h34v-95l14 95h25l13-97v97h34V184zM256 328V184h62c15 0 26 11 26 25v94c0 14-11 25-26 25zm47-118l-9-1v94c5 0 9-1 10-3 2-2 2-8 2-18v-56-12l-3-4zM419 220h3c14 0 26 11 26 25v58c0 14-12 25-26 25h-3c-8 0-16-4-21-11l-2 9h-36V184h38v46c5-6 13-10 21-10zm-8 70v-34l-1-11c-1-2-4-3-6-3s-5 1-6 3v57c1 2 4 3 6 3s6-1 6-3l1-12z"/></svg>`,J=j`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
 <defs>
     <radialGradient id="a" cx="48.46" cy="-.95" r="64.84" fx="48.46" fy="-.95" gradientUnits="userSpaceOnUse">
         <stop offset="0" stop-color="#9f42c6"/>
@@ -211,4 +211,4 @@ import{a as y,i as v,x as c,n as m,b as j,r as k,t as A}from"./index-BKzk3l5h.js
           </ul>
         </div>
       </div>
-    </div>`}};p.styles=[P];g([m({type:Object,attribute:"selected-movie"})],p.prototype,"selectedMovie",2);g([k()],p.prototype,"people",2);g([k()],p.prototype,"runtime",2);g([k()],p.prototype,"setPeopleLoading",2);p=g([A("movie-info")],p);export{p as MovieInfo};
+    </div>`}};p.styles=[P];g([m({type:Object,attribute:"selected-movie"})],p.prototype,"selectedMovie",2);g([y()],p.prototype,"people",2);g([y()],p.prototype,"runtime",2);g([y()],p.prototype,"setPeopleLoading",2);p=g([A("movie-info")],p);export{p as MovieInfo};
